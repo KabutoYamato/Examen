@@ -1,7 +1,7 @@
 
 <div class="container h-100" style="">
-    <div class="row h-100 justify-content-md-center align-items-center">
-        <div class="col-sm-8 "
+    <div class="row h-100 justify-content-center align-items-center">
+        <div class="col-sm-8">
         <form>
             <div class="form-group">
                 <label for="name">Nombre</label>
