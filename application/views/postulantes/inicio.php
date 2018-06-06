@@ -4,7 +4,10 @@
     <div class="row h-100 justify-content-center align-items-center">
         <div class="col-sm-8 border rounded" style="padding: 50px;">
         <h2 class="w-100 text-center">Bienvenido</h2>
-        <?php echo validation_errors();?>
+        <div class="alert alert-danger" <?php if(!validation_errors() == ""){echo 'hidden';}?> role="alert" hidden>
+            <?php echo validation_errors();?>
+        </div>
+        
         <?php echo form_open('postulantes/inicio');?>
             <div class="form-group">
                 <label for="nombre">Nombre</label>

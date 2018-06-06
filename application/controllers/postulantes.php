@@ -7,6 +7,7 @@
         }
 
         public function inicio(){
+            $this->load->helper('url');
             $this->load->helper('form');
             $this->load->library('form_validation');
 
@@ -21,8 +22,12 @@
             }
             else{
                 $this->postulantes_model->set_postulante();
-                $this->load->view('postulantes/succes');
+                redirect('postulantes/examen_inicio');
             }
+        }
+        public function inicio_examen(){
+            $this->load->view('templates/header');
+            $this->load->view('templates/footer');
         }
     }
 ?>
