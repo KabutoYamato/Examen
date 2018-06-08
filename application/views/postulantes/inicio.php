@@ -4,22 +4,22 @@
     <div class="row h-100 justify-content-center align-items-center">
         <div class="col-sm-8 border rounded" style="padding: 50px;">
         <h2 class="w-100 text-center">Bienvenido</h2>
-        <div class="alert alert-danger" <?php if(!validation_errors() == ""){echo 'hidden';}?> role="alert" hidden>
+        <div class="alert alert-danger" <?php if(validation_errors() == ""){echo 'hidden';}?> role="alert">
             <?php echo validation_errors();?>
         </div>
         
         <?php echo form_open('postulantes/inicio');?>
             <div class="form-group">
                 <label for="nombre">Nombre</label>
-                <input type="input" name="nombre" class="form-control" placeholder="Ingrese su nombre">
+                <input type="input" name="nombre" class="form-control" placeholder="Ingrese su nombre" autocomplete="off">
             </div>
             <div class="form-group">
                 <label for="correo">Correo</label>
-                <input type="email" class="form-control" name="correo" placeholder="Ingrese su correo">
+                <input type="email" class="form-control" name="correo" placeholder="Ingrese su correo" autocomplete="off">
             </div>
             <div class="form-group">
                 <label for="telefono">Telefono</label>
-                <input type="text" class="form-control" name="telefono" placeholder="Ingrese su telefono">
+                <input type="text" class="form-control" name="telefono" placeholder="Ingrese su telefono" autocomplete="off">
             </div>
             <div class="form-group">
                 <label for="edad">Edad</label>

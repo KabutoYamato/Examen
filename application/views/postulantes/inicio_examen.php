@@ -47,7 +47,7 @@
             <img src="" class="img-fluid" alt="Ejemplo D" style="width: 35vw;height: 35vw">
             <br></br>
             
-            <a href="#" class="btn btn-primary">Estoy listo para comenzar mi prueba</a>
+            <a href="<?php echo site_url('postulantes/examen/1') ?>" class="btn btn-primary">Estoy listo para comenzar mi prueba</a>
         </div>
     </div>
 </div>
