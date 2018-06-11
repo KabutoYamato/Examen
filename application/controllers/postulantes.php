@@ -33,6 +33,9 @@
             }
         }
         public function inicio_examen(){
+            if(!isset($_SESSION['id'])){
+                redirect('postulantes/inicio');
+            }
             $this->load->view('templates/header');
             $this->load->view('postulantes/inicio_examen');
             $this->load->view('templates/footer');
@@ -47,13 +50,36 @@
         }
 
         public function examen($id){
+            if(!isset($_SESSION['id'])){
+                redirect('postulantes/inicio');
+            }
             $this->load->helper('form');
            
-            
+            if(!empty($this->input->post('res1'))&&!empty($this->input->post('res2'))){
+                $_SESSION['pregunta'.$this->input->post('id')]['contestada'] = true;
+                $_SESSION['pregunta'.$this->input->post('id')]['respuestas']['respuesta_1'] = $this->input->post('res1');
+                $_SESSION['pregunta'.$this->input->post('id')]['respuestas']['respuesta_2'] = $this->input->post('res2');
+            }
             $data['pregunta'] = $this->preguntas_model->get_pregunta($id);
+            if(empty($data['pregunta'])){
+                redirect('postulantes/examen/1');
+            }
             $this->load->view('templates/header');
             $this->load->view('postulantes/examen',$data);
             $this->load->view('templates/footer');
+        }
+
+        public function terminar(){
+            if(isset($_SESSION['id'])){
+                $this->load->model('examen_model');
+                for($i = 1; $i <=48; $i++){
+                    if($_SESSION['pregunta'.$i]['contestada']){
+                        $this->examen_model->insert_pregunta($i);
+                    }
+                }
+                $this->session->sess_destroy();
+                redirect('postulantes/inicio');
+            }
         }
     }
 ?>

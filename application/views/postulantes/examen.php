@@ -28,16 +28,22 @@
         </div>
         
         <div class="col-12">
-            <?php form_open('postulantes/sig_preg'); ?>
+            <?php echo $pregunta['id'] < 48 ?  form_open('postulantes/examen/'.($pregunta['id']+1)) : form_open('postulantes/terminar'); ?>
                 <input type="hidden" name="id" value="<?php echo $pregunta['id'];?>">
                 <div>
-                    <input class="text-center border border-secondary rounded-top" type="text" autocomplete="off" style="width: 5vw; height:5vw; font-size:3vw;" maxlength="1" name="res1">
+                    <input class="text-center border border-secondary rounded-top" type="text" autocomplete="off" style="width: 5vw; height:5vw; font-size:3vw;" maxlength="1" name="res1" value="<?php if($_SESSION['pregunta'.$pregunta['id']]['contestada']){echo $_SESSION['pregunta'.$pregunta['id']]['respuestas']['respuesta_1'];}  ?>">
                 </div>
                 <div>
-                    <input class=" text-center border border-secondary rounded-bottom" type="text" autocomplete="off" style="width: 5vw; height:5vw; font-size:3vw;" maxlength="1" name="res2">
+                    <input class=" text-center border border-secondary rounded-bottom" type="text" autocomplete="off" style="width: 5vw; height:5vw; font-size:3vw;" maxlength="1" name="res2" value="<?php if($_SESSION['pregunta'.$pregunta['id']]['contestada']){echo $_SESSION['pregunta'.$pregunta['id']]['respuestas']['respuesta_2'];}  ?>">
                 </div>
+                <br>
                 <div class="w-100 text-center">
-                    <button type="submit" name="submit" class="btn btn-primary">Enviar</button>
+                    <?php if($pregunta['id'] < 48){?>
+                        <button type="submit" name="submit" class="btn btn-primary">Siguiente pregunta</button>
+                    <?php }
+                    else{?>
+                        <button type="submit" name="submit" class="btn btn-primary">Terminar examen</button>
+                    <?php }?>
                 </div>
             </form>
         </div>
