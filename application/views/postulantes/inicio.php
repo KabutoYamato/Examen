@@ -7,8 +7,8 @@
         <div class="alert alert-danger" <?php if(validation_errors() == ""){echo 'hidden';}?> role="alert">
             <?php echo validation_errors();?>
         </div>
-        
-        <?php echo form_open('postulantes/inicio');?>
+       
+        <form action="../postulantes/inicio" method="post">
             <div class="form-group">
                 <label for="nombre">Nombre</label>
                 <input type="input" name="nombre" class="form-control" placeholder="Ingrese su nombre" autocomplete="off">
